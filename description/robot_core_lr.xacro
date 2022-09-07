@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<material name="white">
+		<color rgba="1 1 1 1"/>
+	</material>
+
+	<material name="black">
+		<color rgba="0 0 0 1"/>
+	</material>
+
+	<!-- BASE LINK -->
+	<link name="base_link">
+		
+	</link>
+	
+	<!-- CHASSIS -->
+	<joint name="chassis_joint" type="fixed">
+		<parent link="base_link"/>
+		<child link="chassis_link"/>
+		<origin xyz="0 0 0"/>
+	</joint>
+
+	<link name="chassis_link">
+		<visual>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<box size="0.8 0.4 0.05"/>
+			</geometry>
+			<material name="white"/>
+		</visual>
+	</link>
+
+	<!-- WHEEL1 -->
+	<joint name="wheel1_joint" type="continuous">
+		<parent link="base_link"/>
+		<child link="wheel1_link"/>
+		<origin xyz="0.3 0.25 0" rpy="${-pi/2} 0 0"/>
+		<axis xyz="0 0 1"/>
+	</joint>
+
+	<link name="wheel1_link">
+		<visual>
+			<geometry>
+				<cylinder radius="0.1" length="0.1"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+	</link>
+
+	<!-- WHEEL2 -->
+	<joint name="wheel2_joint" type="continuous">
+		<parent link="base_link"/>
+		<child link="wheel2_link"/>
+		<origin xyz="0.3 -0.25 0" rpy="${pi/2} 0 0"/>
+		<axis xyz="0 0 -1"/>
+	</joint>
+
+	<link name="wheel2_link">
+		<visual>
+			<geometry>
+				<cylinder radius="0.1" length="0.1"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+	</link>
+
+	<!-- WHEEL3 -->
+	<joint name="wheel3_joint" type="continuous">
+		<parent link="base_link"/>
+		<child link="wheel3_link"/>
+		<origin xyz="-0.3 0.25 0" rpy="${-pi/2} 0 0"/>
+		<axis xyz="0 0 1"/>
+	</joint>
+
+	<link name="wheel3_link">
+		<visual>
+			<geometry>
+				<cylinder radius="0.1" length="0.1"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+	</link>
+
+	<!-- WHEEL4 -->
+	<joint name="wheel4_joint" type="continuous">
+		<parent link="base_link"/>
+		<child link="wheel4_link"/>
+		<origin xyz="-0.3 -0.25 0" rpy="${pi/2} 0 0"/>
+		<axis xyz="0 0 -1"/>
+	</joint>
+
+	<link name="wheel4_link">
+		<visual>
+			<geometry>
+				<cylinder radius="0.1" length="0.1"/>
+			</geometry>
+			<material name="black"/>
+		</visual>
+	</link>
+</robot>
