@@ -11,3 +11,4 @@ you can control the robot by using teleop package.
 ```
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
+![alt text](https://github.com/MickySukmana/four_wheeled_robot/blob/main/img/lr_model.png?raw=true)
