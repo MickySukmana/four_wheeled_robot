@@ -6,8 +6,8 @@
     	<!-- Wheel Information -->
         <left_joint>wheel1_joint</left_joint>
         <right_joint>wheel2_joint</right_joint>
-        <wheel_separation>0.5</wheel_separation>
-        <wheel_diameter>0.2</wheel_diameter>
+        <wheel_separation>0.064</wheel_separation>
+        <wheel_diameter>0.098</wheel_diameter>
  
         <!-- Limit -->
         <max_wheel_torque>200</max_wheel_torque>
@@ -29,8 +29,8 @@
     	<!-- Wheel Information -->
         <left_joint>wheel3_joint</left_joint>
         <right_joint>wheel4_joint</right_joint>
-        <wheel_separation>0.5</wheel_separation>
-        <wheel_diameter>0.2</wheel_diameter>
+        <wheel_separation>0.064</wheel_separation>
+        <wheel_diameter>0.098</wheel_diameter>
  
         <!-- Limit -->
         <max_wheel_torque>200</max_wheel_torque>

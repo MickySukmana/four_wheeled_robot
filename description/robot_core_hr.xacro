@@ -1,0 +1,497 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<!-- BASE LINK -->
+	<link name="base_link">
+	
+	</link>
+
+	<!-- CHASSIS LINK -->
+	<joint name="chassis_joint" type="fixed">
+		<parent link="base_link" />
+		<child link="chassis_link"/>
+		<origin xyz="0 0 0"/>
+	</joint>	
+
+	<link name="chassis_link">
+    	<inertial>
+      		<origin xyz="-0.0852198749371951 -0.00475874794858555 0.04820238965209" rpy="0 0 0" />
+      		<mass value="0.052" />
+      		<inertia ixx="4.34026666666667E-05" ixy="1.38506496057656E-38" ixz="5.94094001424295E-21"
+        	iyy="0.000116566666666667" iyz="-1.60681020716878E-23" izz="7.33026666666667E-05" />
+    	</inertial>
+
+    	<visual>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/chassis_link.STL" />
+      		</geometry>
+      		<material name="">
+        		<color rgba="0.101960784313725 0.101960784313725 0.101960784313725 1" />
+      		</material>
+    	</visual>
+
+    	<collision>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/chassis_link.STL" />
+      		</geometry>
+    	</collision>
+  	</link>
+	
+	<gazebo reference="chassis_link">
+		<material>Gazebo/Black</material>
+	</gazebo>
+
+	<!-- MOTOR1 LINK -->
+	<joint name="motor1_joint" type="fixed">
+    	<origin xyz="-0.13522 -0.088202 -0.0067587" rpy="0 0 0" />
+    	<parent link="chassis_link" />
+    	<child link="motor1_Link" />
+    	<axis xyz="0 0 0" />
+  	</joint>
+	
+	<link name="motor1_Link">
+    	<inertial>
+      		<origin xyz="0.00270571042552559 -4.16333634234434E-17 -0.011" rpy="0 0 0" />
+      		<mass value="0.0194724998040617" />
+      		<inertia ixx="1.30647781465528E-06" ixy="1.8766986143586E-22" ixz="-9.90836784579939E-21"
+        	iyy="2.79499122781643E-06" iyz="-4.22738473239483E-24" izz="2.73953444645254E-06" />
+    	</inertial>
+
+    	<visual>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/motor1_Link.STL" />
+      		</geometry>
+      		<material name="">
+        		<color rgba="1 0.937254901960784 0.137254901960784 1" />
+      		</material>
+    	</visual>
+
+    	<collision>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/motor1_Link.STL" />
+      		</geometry>
+    	</collision>
+  	</link>
+
+	<gazebo reference="motor1_Link">
+		<material>Gazebo/Yellow</material>
+	</gazebo>
+	
+	<!-- WHEEL1 LINK -->
+	<joint name="wheel1_joint" type="continuous">
+    	<origin xyz="-0.0105 -0.032 -0.011" rpy="1.5708 0 0" />
+    	<parent link="motor1_Link" />
+    	<child link="wheel1_Link" />
+    	<axis xyz="0 0 1" />
+  	</joint>
+
+	<link name="wheel1_Link">
+    	<inertial>
+      		<origin xyz="-6.66133814775094E-16 -3.01841884819964E-16 -0.00230999946278176" rpy="0 0 0" />
+      		<mass value="0.047276589565131" />
+      		<inertia ixx="2.48959993057061E-05" ixy="-5.1928000525321E-20" ixz="1.79367297624759E-19"
+        	iyy="2.4895999305706E-05" iyz="-5.043743778255E-20" izz="4.25077560685963E-05" />
+    	</inertial>
+
+    	<visual>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/wheel1_Link.STL" />
+      		</geometry>
+      		<material name="">
+        		<color rgba="1 1 0 1" />
+      		</material>
+    	</visual>
+
+    	<collision>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/wheel1_Link.STL" />
+      		</geometry>
+    	</collision>
+  	</link>
+
+	<gazebo reference="wheel1_Link">
+		<material>Gazebo/Yellow</material>
+	</gazebo>
+
+	<!-- TIRE1 LINK -->
+	<joint name="tire1_joint" type="fixed">
+    	<origin xyz="0 0 -0.005" rpy="0 0 0" />
+    	<parent link="wheel1_Link" />
+    	<child link="tire1_Link" />
+	</joint>
+
+	<link name="tire1_Link">
+    	<inertial>
+      		<origin xyz="0 -3.46944695195361E-18 -2.77555756156289E-17" rpy="0 0 0" />
+      		<mass value="0.0900450328431281" />
+      		<inertia ixx="9.29010340540992E-05" ixy="4.14441750853701E-20" ixz="2.68540865961104E-19"
+        	iyy="9.29010340540992E-05" iyz="5.05977918171685E-21" izz="0.000172262082034564" />
+    	</inertial>
+
+    	<visual>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/tire1_Link.STL" />
+      		</geometry>
+      		<material name="">
+        		<color rgba="1 1 1 1" />
+      		</material>
+    	</visual>
+
+    	<collision>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/tire1_Link.STL" />
+      		</geometry>
+    	</collision>
+  	</link>
+		
+	<gazebo reference="tire1_Link">
+		<material>Gazebo/Black</material>
+	</gazebo>
+
+	<!-- MOTOR2 LINK -->
+	<joint name="motor2_joint" type="fixed">
+    	<origin xyz="-0.13522 -0.0082024 -0.0067587" rpy="0 0 0" />
+    	<parent link="chassis_link" />
+    	<child link="motor2_Link" />
+    	<axis xyz="0 0 0" />
+  	</joint>
+
+	<link name="motor2_Link">
+    	<inertial>
+      		<origin xyz="0.00270571042552559 -3.12250225675825E-17 -0.011" rpy="0 0 0" />
+      		<mass value="0.0194724998040617" />
+      		<inertia ixx="1.30647781465528E-06" ixy="3.50642818155904E-22" ixz="-9.99085198409492E-21"
+        	iyy="2.79499122781643E-06" iyz="8.53182582237749E-24" izz="2.73953444645254E-06" />
+    	</inertial>
+
+    	<visual>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/motor2_Link.STL" />
+      		</geometry>
+      		<material name="">
+        		<color rgba="1 0.937254901960784 0.137254901960784 1" />
+      		</material>
+    	</visual>
+
+    	<collision>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/motor2_Link.STL" />
+      		</geometry>
+    	</collision>
+  	</link>
+
+	<gazebo reference="motor2_Link">
+		<material>Gazebo/Yellow</material>
+	</gazebo>
+
+	<!-- WHEEL2 LINK -->
+	<joint name="wheel2_joint" type="continuous">
+    	<origin xyz="-0.0105 0.032 -0.011" rpy="-1.5708 0 0" />
+    	<parent link="motor2_Link" />
+    	<child link="wheel2_Link" />
+    	<axis xyz="0 0 -1" />
+  	</joint>
+
+	<link name="wheel2_Link">
+    	<inertial>
+      		<origin xyz="-2.24820162486594E-15 8.81239525796218E-16 -0.00230999946278173" rpy="0 0 0" />
+      		<mass value="0.047276589565131" />
+      		<inertia ixx="2.4895999305706E-05" ixy="-7.45367280092708E-20" ixz="7.79478520652575E-20"
+        	iyy="2.4895999305706E-05" iyz="-9.64165431735149E-20" izz="4.25077560685963E-05" />
+    	</inertial>
+
+    	<visual>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/wheel2_Link.STL" />
+      		</geometry>
+      		<material name="">
+        		<color rgba="1 1 0 1" />
+      		</material>
+    	</visual>
+
+    	<collision>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/wheel2_Link.STL" />
+      		</geometry>
+    	</collision>
+  	</link>
+
+	<gazebo reference="wheel2_Link">
+		<material>Gazebo/Yellow</material>
+	</gazebo>
+
+	<!-- TIRE2 LINK -->
+	<joint name="tire2_joint" type="fixed">
+    	<origin xyz="0 0 -0.005" rpy="0 0 0" />
+    	<parent link="wheel2_Link" />
+    	<child link="tire2_Link" />
+  	</joint>
+
+	<link name="tire2_Link">
+    	<inertial>
+      		<origin xyz="0 -3.46944695195361E-18 0" rpy="0 0 0" />
+      		<mass value="0.0900450328431281" />
+      		<inertia ixx="9.29010340540991E-05" ixy="-1.07413262716203E-20" ixz="-3.48850397206446E-22"
+        	iyy="9.29010340540991E-05" iyz="-3.40168150669033E-21" izz="0.000172262082034564" />
+    	</inertial>
+
+    	<visual>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/tire2_Link.STL" />
+      		</geometry>
+      		<material name="">
+        		<color rgba="1 1 1 1" />
+      		</material>
+    	</visual>
+
+    	<collision>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/tire2_Link.STL" />
+      		</geometry>
+    	</collision>
+  	</link>
+
+	<gazebo reference="tire2_Link">
+		<material>Gazebo/Black</material>
+	</gazebo>
+
+	<!-- MOTOR3 LINK -->
+	<joint name="motor3_joint" type="fixed">
+    	<origin xyz="-0.03522 -0.088202 -0.0067587" rpy="0 0 0" />
+    	<parent link="chassis_link" />
+    	<child link="motor3_Link" />
+    	<axis xyz="0 0 0" />
+  	</joint>	
+
+	<link name="motor3_Link">
+    	<inertial>
+      		<origin xyz="-0.0027057104255255 -2.77555756156289E-17 -0.0109999999999999" rpy="0 0 0" />
+      		<mass value="0.0194724998040617" />
+      		<inertia ixx="1.30647781465528E-06" ixy="-2.31398212112382E-22" ixz="2.67520476227251E-22"
+        	iyy="2.79499122781643E-06" iyz="3.04492335017947E-23" izz="2.73953444645254E-06" />
+    	</inertial>
+
+    	<visual>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/motor3_Link.STL" />
+      		</geometry>
+      		<material name="">
+				<color rgba="1 0.937254901960784 0.137254901960784 1" />
+      		</material>
+    	</visual>
+
+    	<collision>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/motor3_Link.STL" />
+      		</geometry>
+    	</collision>
+  	</link>
+
+	<gazebo reference="motor3_Link">
+		<material>Gazebo/Yellow</material>
+	</gazebo>
+	
+	<!-- WHEEL3 LINK -->
+	<joint name="wheel3_joint" type="continuous">
+    	<origin xyz="0.0105 -0.032 -0.011" rpy="1.5708 0 0" />
+    	<parent link="motor3_Link" />
+    	<child link="wheel3_Link" />
+    	<axis xyz="0 0 1" />
+  	</joint>	
+
+	<link name="wheel3_Link">
+    	<inertial>
+      		<origin xyz="5.55111512312578E-16 4.33680868994202E-16 -0.00230999946278169" rpy="0 0 0" />
+      		<mass value="0.047276589565131" />
+      		<inertia ixx="2.48959993057062E-05" ixy="-2.95393951560817E-20" ixz="-1.1859142019731E-19"
+        	iyy="2.48959993057061E-05" iyz="2.46499724573474E-20" izz="4.25077560685963E-05" />
+    	</inertial>
+
+    	<visual>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/wheel3_Link.STL" />
+      		</geometry>
+      		<material name="">
+        		<color rgba="1 1 0 1" />
+      		</material>
+    	</visual>
+
+    	<collision>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/wheel3_Link.STL" />
+      		</geometry>
+    	</collision>
+  	</link>
+
+	<gazebo reference="wheel3_Link">
+		<material>Gazebo/Yellow</material>
+	</gazebo>
+
+	<!-- TIRE3 LINK -->
+	<joint name="tire3_joint" type="fixed">
+    	<origin xyz="0 0 -0.005" rpy="0 0 0" />
+    	<parent link="wheel3_Link" />
+    	<child link="tire3_Link" />
+  	</joint>
+
+	<link name="tire3_Link">
+    	<inertial>
+      		<origin xyz="-3.46944695195361E-18 6.93889390390723E-18 1.38777878078145E-17" rpy="0 0 0" />
+      		<mass value="0.0900450328431282" />
+      		<inertia ixx="9.29010340540992E-05" ixy="4.17490187137831E-20" ixz="1.32497514142168E-21"
+        	iyy="9.29010340540992E-05" iyz="1.11298170171339E-20" izz="0.000172262082034564" />
+    	</inertial>
+
+    	<visual>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/tire3_Link.STL" />
+      		</geometry>
+      		<material name="">
+        		<color rgba="1 1 1 1" />
+      		</material>
+    	</visual>
+
+    	<collision>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/tire3_Link.STL" />
+      		</geometry>
+    	</collision>
+  	</link>
+
+	<gazebo reference="tire3_Link">
+		<material>Gazebo/Black</material>
+	</gazebo>
+
+	<!-- MOTOR4 LINK -->
+	<joint name="motor4_joint" type="fixed">
+    	<origin xyz="-0.03522 -0.0082024 -0.0067587" rpy="0 0 0" />
+    	<parent link="chassis_link" />
+    	<child link="motor4_Link" />
+    	<axis xyz="0 0 0" />
+  	</joint>	
+
+	<link name="motor4_Link">
+    	<inertial>
+      		<origin xyz="-0.0027057104255255 -3.12250225675825E-17 -0.0109999999999999" rpy="0 0 0" />
+      		<mass value="0.0194724998040617" />
+      		<inertia ixx="1.30647781465528E-06" ixy="-2.5193748748934E-22" ixz="3.43693591802593E-22"
+        	iyy="2.79499122781643E-06" iyz="-9.91040563271019E-24" izz="2.73953444645254E-06" />
+    	</inertial>
+
+    	<visual>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/motor4_Link.STL" />
+      		</geometry>
+      		<material name="">
+        		<color rgba="1 0.937254901960784 0.137254901960784 1" />
+      		</material>
+    	</visual>
+
+    	<collision>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/motor4_Link.STL" />
+      		</geometry>
+    	</collision>
+  	</link>
+
+	<gazebo reference="motor4_Link">
+		<material>Gazebo/Yellow</material>
+	</gazebo>
+
+	<!-- WHEEL4 LINK -->
+	<joint name="wheel4_joint" type="continuous">
+    	<origin xyz="0.0105 0.032 -0.011" rpy="-1.5708 0 0" />
+    	<parent link="motor4_Link" />
+    	<child link="wheel4_Link" />
+    	<axis xyz="0 0 -1" />
+  	</joint>
+
+	<link name="wheel4_Link">
+    	<inertial>
+      		<origin xyz="-6.73072708679001E-16 -2.1163626406917E-16 -0.00230999946278174" rpy="0 0 0" />
+      		<mass value="0.047276589565131" />
+      		<inertia ixx="2.48959993057061E-05" ixy="-6.81810082245302E-20" ixz="1.03831974662023E-19"
+        	iyy="2.4895999305706E-05" iyz="-5.99868683581929E-20" izz="4.25077560685963E-05" />
+    	</inertial>
+
+    	<visual>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/wheel4_Link.STL" />
+      		</geometry>
+      		<material name="">
+        		<color rgba="1 1 0 1" />
+      		</material>
+    	</visual>
+
+    	<collision>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/wheel4_Link.STL" />
+      		</geometry>
+    	</collision>
+  	</link>
+
+	<gazebo reference="wheel4_Link">
+		<material>Gazebo/Yellow</material>
+	</gazebo>
+
+	<!-- TIRE4 LINK -->
+	<joint name="tire4_joint" type="fixed">
+    	<origin xyz="0 0 0.01" rpy="0 0 0" />
+    	<parent link="wheel4_Link" />
+    	<child link="tire4_Link" />
+  	</joint>
+
+	<link name="tire4_Link">
+    	<inertial>
+      		<origin xyz="2.42861286636753E-17 3.46944695195361E-18 -0.015" rpy="0 0 0" />
+      		<mass value="0.0900450328431281" />
+      		<inertia ixx="9.29010340540991E-05" ixy="-4.79914750698499E-20" ixz="-3.79941895281415E-21"
+        	iyy="9.29010340540991E-05" iyz="-6.71686272134588E-21" izz="0.000172262082034564" />
+    	</inertial>
+
+    	<visual>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/tire4_Link.STL" />
+      		</geometry>
+      		<material name="">
+        		<color rgba="1 1 1 1" />
+      		</material>
+    	</visual>
+
+    	<collision>
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<geometry>
+        		<mesh filename="package://four_wheeled_robot/meshes/tire4_Link.STL" />
+      		</geometry>
+    	</collision>
+  	</link>
+
+	<gazebo reference="tire4_Link">
+		<material>Gazebo/Black</material>
+	</gazebo>
+</robot>
