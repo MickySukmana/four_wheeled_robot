@@ -11,7 +11,6 @@ you can control the robot by using teleop package.
 ```
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
-you can switch the model between low resolution and high resolution by commenting either robot_core_lr.xacro or robot_core_hr.xacro  
-in robot.urdf.xacro
+you can switch the model between low resolution and high resolution by commenting either robot_core_lr.xacro or robot_core_hr.xacro in robot.urdf.xacro
 ![alt text](https://github.com/MickySukmana/four_wheeled_robot/blob/main/img/lr_model.png?raw=true)
 ![alt text](https://github.com/MickySukmana/four_wheeled_robot/blob/main/img/hr_model.png?raw=true)
